@@ -1,6 +1,7 @@
 import math
 import random
 import copy
+from team import Team
 
 class Person:
     def __init__(self, id, languages, position, experience, objective, idea):
@@ -35,15 +36,15 @@ class Person:
             pref += 1
         pref += abs(self.experience-toCompare.experience) + abs(self.idea - toCompare.idea)
         return pref
-    
+
     @property
     def languages(self):
         return self._languages
-    
+
     @languages.setter
     def languages(self, languages):
         self._languages = languages
-    
+
     @property
     def position(self):
         return self._position
@@ -51,23 +52,23 @@ class Person:
     @position.setter
     def position(self, position):
         self._position = position
-    
+
     @property
     def experience(self):
         return self._experience
-    
+
     @experience.setter
     def experience(self, experience):
         self._experience = experience
-    
+
     @property
     def objective(self):
         return self._objective
-    
+
     @objective.setter
     def objective(self, objective):
         self._objective = objective
-    
+
     @property
     def idea(self):
         return self._idea
@@ -79,43 +80,43 @@ class Person:
     @property
     def preferences(self):
         return self._preferences
-    
+
     @preferences.setter
     def prefernces(self,preferences):
-        self._preferences = preferences
-    
+        self._preferences = replace
+
     @property
     def rankings(self):
         return self._rankings
-    
+
     @rankings.setter
     def rankings(self,rankings):
         self._rankings = rankings
-    
+
     @property
     def groupMember(self):
         return self._groupMember
-    
+
     @groupMember.setter
     def groupMember(self,groupMember):
         self._groupMember = groupMember
-    
+
     @property
     def events(self):
         return self._eventId
-    
+
     @events.setter
     def events(self,eventId):
         self._eventId = eventId
-    
+
     @property
     def placeholder(self):
         return self._placeholder
-    
+
     @placeholder.setter
     def placeholder(self,placeholder):
         self._placeholder = placeholder
-    
+
     def inGroup(self):
         if(self.groupMember == None):
             return False
@@ -144,7 +145,7 @@ def basicSort(people, groupSize):
         random.shuffle(people)
         while(len(peopleCopy)%groupSize != 0):
             blank = Person(-1, [""],"",0,"",0)
-            blank.setPlaceHolder()
+            blank.setIsPlaceHolder(True)
             peopleCopy.append(blank)
 
         for i in range(0,len(peopleCopy)): #get everyones rankings of everyone else
@@ -210,4 +211,13 @@ def basicSort(people, groupSize):
         if(satisfactions[i]>maxSatisfaction):
             maxSatisfaction = satisfactions[i]
             maxIndex = i
-    return allGroups[maxIndex]
+
+    toConvert = allGroups[maxIndex]
+    output = []
+    for indTeam in toConvert:
+        toAdd = Team()
+        for person in indTeam:
+            toAdd.add_member(person)
+        output.append(toAdd)
+
+    return output
