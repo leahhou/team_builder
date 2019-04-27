@@ -5,7 +5,7 @@ from team_building_system import TeamBuildingSystem
 from profile import Login
 from algorithm import Person
 from event import Event
-from forms import Languages
+from forms import ProfileForm
 
 @app.route("/")
 def homepage():
