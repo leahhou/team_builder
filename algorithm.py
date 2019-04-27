@@ -82,7 +82,7 @@ class Person:
     
     @preferences.setter
     def prefernces(self,preferences):
-        self._preferences = replace
+        self._preferences = preferences
     
     @property
     def rankings(self):
@@ -144,7 +144,7 @@ def basicSort(people, groupSize):
         random.shuffle(people)
         while(len(peopleCopy)%groupSize != 0):
             blank = Person(-1, [""],"",0,"",0)
-            blank.setIsPlaceHolder(True)
+            blank.setPlaceHolder()
             peopleCopy.append(blank)
 
         for i in range(0,len(peopleCopy)): #get everyones rankings of everyone else
