@@ -27,8 +27,8 @@ def login():
                 return render_template("login.html", errors=errors)
     return render_template("login.html")
 
-@app.route("/preference", methods=["POST","GET"])
-def preference(): 
+@app.route("/preference/<name>", methods=["POST","GET"])
+def preference(name): 
     #database to store all options to display in form
     languages=["python","ruby","java","Javasript","c#","c++","PHP",
     "html","css","Perl","swift"
