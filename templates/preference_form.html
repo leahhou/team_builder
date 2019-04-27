@@ -13,10 +13,10 @@
 <h1>Preference Questionnaire</h1>
 <form>
 <div>
-    <h3>Positions you have worked in</h3>
-        <input type="checkbox" name="dev_role" value="back-end"> back-end 
-        <input type="checkbox" name="dev_role" value="front-end"> front-end 
-        <input type="checkbox" name="dev_role" value="full-stack"> full-stack  
+    <h3>Which positions do you most preferred to worke in?</h3>
+        <input type="radio" name="dev_role" value="back-end"> back-end 
+        <input type="radio" name="dev_role" value="front-end"> front-end 
+        <input type="radio" name="dev_role" value="full-stack"> full-stack  
 </div>
 
 <div>
@@ -28,43 +28,26 @@
 
 <div>
     <h3>Your Experience level</h3>
-        <li>
-            <ul>0 -2 years</ul>
-            <ul>2 -3 years</ul>
-            <ul>3 -5 years</ul>
-            <ul>5 + years</ul>
-            <ul>10 + years</ul>
-        </li>
+    <input type="radio" name="experience" value="under_1_year"> within a year
+    <input type="radio" name="experience" value="under_3_year">  under 3 years
+    <input type="radio" name="experience" value="3_5_year"> 3-5 years
+    <input type="radio" name="experience" value="5+_year"> 5+ years
 </div>
 
 <div>
     <h3>What is your objective in Hackthon?</h3>
-        <li>
-            <ul>win the prize!</ul>
-            <ul>Learning new things</ul>
-            <ul>Networking</ul>
-            <ul>Others</ul>
-        </li>
+    <input type="radio" name="objective" value="win_prize"> win prize <br>
+    <input type="radio" name="objective" value="learning"> learning new things<br>
+    <input type="radio" name="objective" value="networking"> networking <br>
 </div>
 
 <div>
     <h3>How passionate you are for your idea?</h3>
-    <li>
-        <ul>1 I am very happy to helpe others build on their ideas</ul>
-        <ul>2</ul>
-        <ul>3</ul>
-        <ul>4</ul>
-        <ul>5 I am okay with both</ul>
-        <ul>6</ul>
-        <ul>7</ul>
-        <ul>8</ul>
-        <ul>9</ul>
-        <ul>10 I am really passionate about making my idea come true!</ul>
-    </li>
+    0: you are happy to help work on others' ideas
+    <input type="range" min="1" max="10">
+    10: you really want to work on your idea
 </div>
-
 </form>
-
 </body>
 </html>
        
