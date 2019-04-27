@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500|Permanent+Marker');
+$title-font: 'Permanent Marker', cursive;
+$body-font: 'Montserrat', Helvetica, Arial, sans-serif;
+$color-white: rgb(255, 255, 255);
+$color-lt-steel-blue:#D3DDE2;
+$color-lt-slate-grey: #7285A0;
+$color-midnight-blue: #0D3F67;
+$color-navy: #041434;
+$color-dk-midnight-blue: #051325;
+$color-dk-midnight-blue2: #0B131D;
+
+@mixin title-font {
+    font-family: $title-font;
+    // font-size: 86px;
+    font-size: 40px;
+    color: $color-lt-steel-blue;
+}
+@mixin body-font {
+    font-weight: 500;
+    font-family: $body-font;
+    font-size: 10px;
+    color: $color-lt-slate-grey;
+}
+h1 {
+    @include title-font();
+}
+h2 {
+    @include title-font();
+}
+p {
+    @include body-font();
+}
+#members_all {
+    .member {
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-content: space-between;
+        z-index: 3;
+
+        p {
+            color: $color-white;
+            font-size: 25px;
+            margin-top: 0px;
+            margin-bottom: 10px;
+            align-items: center;
+            z-index: 3;
+        }
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 3;
+        }
+    }
+    h2 {
+        font-size: 90px;
+        color:$color-navy;
+        margin-bottom: 0px;
+        text-align: center;
+        z-index: 3;
+    }
+    p {
+        color: $color-lt-steel-blue;
+        font-size: 30px;
+        margin-top: 0px;
+        margin-bottom: 110px;
+        text-align: center;
+        z-index: 3;
+    }
+    #teams_all {
+        .team {
+            width: 100vw;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-content: space-between;
+            z-index: 3;
+    
+            p {
+                color: $color-white;
+                font-size: 25px;
+                margin-top: 0px;
+                margin-bottom: 10px;
+                align-items: center;
+                z-index: 3;
+            }
+            div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 3;
+            }
+        }
+        h2 {
+            font-size: 90px;
+            color:$color-navy;
+            margin-bottom: 0px;
+            text-align: center;
+            z-index: 3;
+        }
+        p {
+            color: $color-lt-steel-blue;
+            font-size: 30px;
+            margin-top: 0px;
+            margin-bottom: 110px;
+            text-align: center;
+            z-index: 3;
+        }
+    }
+}
