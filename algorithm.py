@@ -92,11 +92,10 @@ def basicSort(people, groupSize):
             member = peopleCopy[i]
             original = member
             member = member.groupMember
-            groups.append([member])
+            groups.append([])
             while(member not in groups[i]):
-                groups[i].append(member.groupMember)
+                groups[i].append(member)
                 member = member.groupMember
-        print(groups)
         allGroups.append(groups)
 
     satisfactions = []
@@ -123,7 +122,7 @@ def main():
     people.append(Person(["Java"],"BackEnd",3,"Prize",7,0))
     people.append(Person(["JavaScript"],"FrontEnd",2,"Networking",6,0))
     people.append(Person(["Ada"],"FullStack",2,"Friends",4,0))
-    print(basicSort(people,3))
+    print(basicSort(people,2))
 
 
 
