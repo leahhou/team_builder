@@ -10,13 +10,16 @@ class Event():
         self._host = host
         self._desc = desc
         self._participants = []
+        self._attendees = 0
         self._teams = []
     
     def add_participant(self, profile):
         self._participants.append(profile)
+        self._attendees += 1
     
     def remove_participant(self, id):
         for i in self._participants:
             if i.id == id:
                 self._participants.remove(i)
+                self._attendees -= 1
                 break

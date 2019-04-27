@@ -3,7 +3,7 @@ import random
 import copy
 
 class Person:
-    def __init__(self, languages, position, experience, objective, idea, eventId):
+    def __init__(self, languages, position, experience, objective, idea):
         self.languages = languages #list of strings, only need language 1 to match
         self.position = position #strings - frontend, backend, fullstack
         self.experience = experience #int from 0-3
@@ -12,7 +12,7 @@ class Person:
         self.preferences = {} # Key: Person, Value: Int
         self.rankings = [] # list of Person objects
         self.groupMember = None
-        self.eventId = eventId
+        self.events = []
         self.placeholder = False
 
     def genRankings(self):
@@ -62,7 +62,7 @@ def basicSort(people, groupSize):
         print("RUN: " + str(run),end = ": ")
         random.shuffle(people)
         while(len(peopleCopy)%groupSize != 0):
-            blank = Person([""],"",0,"",0,0)
+            blank = Person([""],"",0,"",0)
             blank.setPlaceHolder()
             peopleCopy.append(blank)
 
@@ -131,16 +131,3 @@ def basicSort(people, groupSize):
             maxSatisfaction = satisfactions[i]
             maxIndex = i
     return allGroups[maxIndex]
-
-def main():
-    people = []
-    people.append(Person(["Python","Java","JavaScript"],"FrontEnd",3,"Networking",10,0))
-    people.append(Person(["PHP"],"BackEnd",2,"Networking",2,0))
-    people.append(Person(["C++"],"BackEnd",1,"Prize",5,0))
-    people.append(Person(["Java"],"BackEnd",3,"Prize",7,0))
-    people.append(Person(["JavaScript"],"FrontEnd",2,"Networking",6,0))
-    people.append(Person(["C#"],"FrontEnd",2,"Networking",6,0))
-    people.append(Person(["Ada"],"FullStack",2,"Friends",4,0))
-    print("Output: {}".format(basicSort(people,4))) #groups of 2
-
-main()
