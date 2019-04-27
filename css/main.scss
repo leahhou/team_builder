@@ -1,6 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500');
-$title-font: 'Montserrat', Helvetica, Arial, sans-serif;
-$body-font: 'Montserrat', Helvetica, Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700|Roboto:300,400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Gothic+A1:400,700');
+$title-font: 'Gothic', Helvetica, Arial, sans-serif;
+$body-font: 'Poppins', Helvetica, Arial, sans-serif;
+
+
+
+@import "preference";
 
 @mixin title-font {
     font-family: $title-font;
@@ -118,3 +123,4 @@ footer {
         text-align: center
     }
 }
+

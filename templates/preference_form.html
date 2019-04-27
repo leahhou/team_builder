@@ -8,22 +8,17 @@
     <link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css">
     <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css">
 </head>
-<body>
-<h1>Preference Questionnaire</h1>
-<form method="POST" action="/preference/{{ id }}">
-    {% if form.position.data %}
-        <div>{{ form.position.label }} {{ form.position(value="form.position.data") }}</div>
-    {% else %}
-        <div>{{ form.position.label }} {{ form.position() }}</div>
-    {% endif %}
-
-    <div>{{ form.languages.label }}
-        {{ form.languages() }}</div>
-    <div>{{ form.experience.label }} {{form.experience()}}</div>
-    <div>{{ form.objective.label }} {{form.objective()}}</div>
+<body class="preference">
+    <h1>Preference Questionnaire</h1>
+    <form method="POST">
+        <div >{{ form.position.label(class_="questions")}} {{ form.position(class_="questions") }}</div>
+        <div >{{ form.languages.label(class_="questions")}}
+            {{ form.languages(id_="languages") }}</div>
+        <div>{{ form.experience.label(class_="questions") }} {{form.experience(class_="questions")}}</div>
+        <div>{{ form.objective.label(class_="questions") }} {{form.objective(class_="questions")}}</div>
 <!---{% raw %}    <div>{{ form.ideas.label }} {{ form.ideas() }}</div>  {% endraw %}-->
-    <div>{{ form.submit() }} {{ form.cancel() }}</div>
-</form>
+        <div>{{ form.submit(class_="questions") }} {{ form.cancel(class_="questions") }}</div>
+    </form>
 </body>
 </html>
        
