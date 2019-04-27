@@ -2,6 +2,7 @@ from flask import request, render_template, redirect, url_for, abort
 from server import app, system
 
 from team_building_system import TeamBuildingSystem
+from profile import Login
 from algorithm import Person
 from event import Event
 
@@ -9,19 +10,24 @@ from event import Event
 def homepage():
     return render_template('index.html')
 
-@app.route("/login", method=["POST"])
+@app.route("/login", methods=["POST", "GET"])
 def login():
     if request.method == "POST":
         # retrieve login details
         username = request.form["username"]
         password = request.form["password"]
         
-        for i in 
-
-        return redirect(url_for("preference"))
+        for i in system.logins:
+            if i.username == username:
+                if i.verify(username, password):
+                    return redirect(url_for("preference"))
+                else:
+                    errors = {}
+                    errors["login"] = "Login failed"
+                return render_template("login.html", errors=errors)
     return render_template("login.html")
 
-@app.route("/preference/<name>", method=["POST"])
+@app.route("/preference/<name>", methods=["POST"])
 def preference(name): 
     return render_template("preference_form.html")
 

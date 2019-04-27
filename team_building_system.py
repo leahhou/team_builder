@@ -1,5 +1,5 @@
 from event import Event
-from profile import Person
+from algorithm import Person
 
 class TeamBuildingSystem():
     def __init__(self):
@@ -11,9 +11,12 @@ class TeamBuildingSystem():
         event = Event(location, host, desc)
         self._events.append(event)
     
-    def add_member(self, person):
-        self._members.append(person)
+    def add_login(self, login):
+        self._logins.append(login)
+    
+    def add_profile(self, profile):
+        self._profiles.append(profile)
     
     @property
     def logins(self):
-        return logins
+        return self._logins
