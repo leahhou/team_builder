@@ -1,4 +1,5 @@
 from id_generator import IdGenerator
+from profile import Person
 
 event_id = IdGenerator()
 
