@@ -36,31 +36,37 @@ class Person:
         pref += abs(self.experience-toCompare.experience) + abs(self.idea - toCompare.idea)
         return pref
     
+    @property
     def getPreferences(self):
         return self._preferences
+    @preferences.setter
     def setPrefernces(self,preferences):
         self._preferences = replace
-
+    @property
     def getRankings(self):
         return self._rankings
+    @rankings.setter
     def setRankings(self,rankings):
         self._rankings = rankings
-
+    @property
     def getGroupMember(self):
         return self._groupMember
+    @groupMember.setter
     def setGroupMember(self,groupMember):
         self._groupMember = groupMember
-
+    @property
     def getEventId(self):
         return self._eventId
+    @eventId.setter
     def setEventId(self,eventId):
         self._eventId = eventId
-
+    @property
     def isPlaceholder(self):
         return self._placeholder
+    @placeholder.setter
     def setIsPlaceholder(self,placeholder):
         self._placeholder = placeholder
-
+    
     def inGroup(self):
         if(self.groupMember == None):
             return False
