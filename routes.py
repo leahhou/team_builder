@@ -7,6 +7,13 @@ from algorithm import Person
 from event import Event
 from forms import ProfileForm
 
+class PersonData:
+  def __init__(self):
+    self.position = None
+    self.languages = None
+    self.experience = None
+    self.objective = None
+
 @app.route("/")
 def homepage():
     return render_template('index.html')
@@ -31,24 +38,25 @@ def login():
 @app.route("/preference/<id>", methods=["POST","GET"])
 def preference(id): 
     form = ProfileForm()
-    print(form.validate())
     # print(form.ideas.data)
     if request.method == 'POST':
         print("in this statement")
-        position = form.position.data
-        languages = form.languages.data
-        experience = form.experience.data
-        objective = form.objective.data
-        ideas = 1
+        fields = PersonData()
+        form.populate_obj(fields)
+        print(fields.languages)
+        print(fields.position)
+        print(fields.experience)
 
-        new = Person(id, languages, position, experience, objective, ideas)
-        system.add_profile(new)
+        # new = Person(id, languages, position, experience, objective, ideas)
+        # system.add_profile(new)
         return redirect(url_for("profile", id=id))
 
     return render_template("preference_form.html", form=form, id=id)
 
 @app.route("/profile/<id>")
 def profile(id):
+    profile = None
+    username = None
     for i in system.profiles:
         if i.id == id:
             profile = i
