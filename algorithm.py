@@ -57,9 +57,9 @@ def groupSatisfaction(group):
 def basicSort(people, groupSize):
 
     allGroups = []
-    for run in range(0,5): # do 5 random runs of algorithm, find best grouping
+    for run in range(0,20): # do 5 random runs of algorithm, find best grouping
         peopleCopy = copy.deepcopy(people)
-        print("RUN: " + str(run))
+        print("RUN: " + str(run),end = ": ")
         random.shuffle(people)
         while(len(peopleCopy)%groupSize != 0):
             blank = Person([""],"",0,"",0,0)
@@ -130,7 +130,7 @@ def basicSort(people, groupSize):
         if(satisfactions[i]>maxSatisfaction):
             maxSatisfaction = satisfactions[i]
             maxIndex = i
-    return allGroups[i]
+    return allGroups[maxIndex]
 
 def main():
     people = []
@@ -141,6 +141,6 @@ def main():
     people.append(Person(["JavaScript"],"FrontEnd",2,"Networking",6,0))
     people.append(Person(["C#"],"FrontEnd",2,"Networking",6,0))
     people.append(Person(["Ada"],"FullStack",2,"Friends",4,0))
-    print(basicSort(people,4)) #groups of 2
+    print("Output: {}".format(basicSort(people,4))) #groups of 2
 
 main()
