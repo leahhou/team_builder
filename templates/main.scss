@@ -94,27 +94,27 @@ p {
     }
 }
     
-        #one_team {
-            .team {
-                width: 100vw;
-                display: flex;
-                flex-direction: row;
-                justify-content: space-evenly;
-                align-content: space-between;
-                z-index: 3;
-        
-                div {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    z-index: 3;
-                }
-            }
-        }
-    
-    footer {
-        p {
-            text-align: center
+#one_team {
+    .team {
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-content: space-between;
+        z-index: 3;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 3;
         }
     }
+}
+
+footer {
+    p {
+        text-align: center
+    }
+}
