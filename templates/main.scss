@@ -1,26 +1,19 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500|Permanent+Marker');
-$title-font: 'Permanent Marker', cursive;
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500');
+$title-font: 'Montserrat', Helvetica, Arial, sans-serif;
 $body-font: 'Montserrat', Helvetica, Arial, sans-serif;
-$color-white: rgb(255, 255, 255);
-$color-lt-steel-blue:#D3DDE2;
-$color-lt-slate-grey: #7285A0;
-$color-midnight-blue: #0D3F67;
-$color-navy: #041434;
-$color-dk-midnight-blue: #051325;
-$color-dk-midnight-blue2: #0B131D;
 
 @mixin title-font {
     font-family: $title-font;
     // font-size: 86px;
     font-size: 40px;
     text-align: center;
-    color: $color-dk-midnight-blue2;
+    color: #0B131D;
 }
 @mixin body-font {
     font-weight: 500;
     font-family: $body-font;
     font-size: 10px;
-    color: $color-lt-slate-grey;
+    color: #041434;
 }
 h1 {
     @include title-font();
@@ -37,7 +30,7 @@ p {
     justify-content: center;
 }
 #members_all {
-    background-color: rgb(27, 137, 228);
+    background-color:white;
     background-size: cover;
     width: 100%;
     height: 100vh;
@@ -48,15 +41,6 @@ p {
         justify-content: space-evenly;
         align-content: space-between;
         z-index: 3;
-
-        p {
-            color: $color-white;
-            font-size: 25px;
-            margin-top: 0px;
-            margin-bottom: 10px;
-            align-items: center;
-            z-index: 3;
-        }
         div {
             display: flex;
             flex-direction: column;
@@ -64,21 +48,6 @@ p {
             align-items: center;
             z-index: 3;
         }
-    }
-    h2 {
-        font-size: 90px;
-        color:$color-navy;
-        margin-bottom: 0px;
-        text-align: center;
-        z-index: 3;
-    }
-    p {
-        color: $color-lt-steel-blue;
-        font-size: 30px;
-        margin-top: 0px;
-        margin-bottom: 110px;
-        text-align: center;
-        z-index: 3;
     }
     #teams_all {
         .team {
@@ -89,14 +58,6 @@ p {
             align-content: space-between;
             z-index: 3;
     
-            p {
-                color: $color-white;
-                font-size: 25px;
-                margin-top: 0px;
-                margin-bottom: 10px;
-                align-items: center;
-                z-index: 3;
-            }
             div {
                 display: flex;
                 flex-direction: column;
@@ -114,14 +75,6 @@ p {
             z-index: 3;
             background-color: #0B131D;
     
-            p {
-                color: $color-white;
-                font-size: 25px;
-                margin-top: 0px;
-                margin-bottom: 10px;
-                align-items: center;
-                z-index: 3;
-            }
             div {
                 display: flex;
                 flex-direction: column;
@@ -129,7 +82,7 @@ p {
                 align-items: center;
                 z-index: 3;
             }
-        }
+        }https://github.com/zangdi/team_builder/pull/14/conflict?name=templates%252Fmain.scss&ancestor_oid=95459ebf4dbae7478d10b00f2a191cad30bfe105&base_oid=ab449e17ee7930801343774b9d20134e1ca3ce03&head_oid=efb19ee17605958bcb22d66ec34e0de155188711
         #one_team {
             .team {
                 width: 100vw;
@@ -139,14 +92,6 @@ p {
                 align-content: space-between;
                 z-index: 3;
         
-                p {
-                    color: $color-white;
-                    font-size: 25px;
-                    margin-top: 0px;
-                    margin-bottom: 10px;
-                    align-items: center;
-                    z-index: 3;
-                }
                 div {
                     display: flex;
                     flex-direction: column;
@@ -156,25 +101,9 @@ p {
                 }
             }
         }
-        h2 {
-            font-size: 90px;
-            color:$color-navy;
-            margin-bottom: 0px;
-            text-align: center;
-            z-index: 3;
-        }
-        p {
-            color: $color-lt-steel-blue;
-            font-size: 30px;
-            margin-top: 0px;
-            margin-bottom: 110px;
-            text-align: center;
-            z-index: 3;
-        }
     }
     footer {
         p {
             text-align: center
         }
     }
-}
