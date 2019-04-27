@@ -1,13 +1,36 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500");
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700|Roboto:300,400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Gothic+A1:400,700");
+.preference {
+  background-color: #6767F3;
+}
+
+.questions {
+  list-style: none;
+  font-family: Poppins;
+}
+
+#languages {
+  display: block;
+  font-family: Poppins;
+  background-color: #6767F3;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 h1 {
-  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  font-family: "Gothic", Helvetica, Arial, sans-serif;
   font-size: 40px;
   text-align: center;
   color: #0B131D;
 }
 
 h2 {
-  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  font-family: "Gothic", Helvetica, Arial, sans-serif;
   font-size: 40px;
   text-align: center;
   color: #0B131D;
@@ -15,7 +38,7 @@ h2 {
 
 p {
   font-weight: 500;
-  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  font-family: "Poppins", Helvetica, Arial, sans-serif;
   font-size: 10px;
   color: #041434;
 }
