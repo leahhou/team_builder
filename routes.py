@@ -30,10 +30,10 @@ def login():
 
 @app.route("/preference", methods=["POST","GET"])
 def preference(): 
-    #database to store all options to display in form
-    languages=["python","ruby","java","Javasript","c#","c++","PHP",
-    "html","css","Perl","swift"]
-    return render_template("preference_form.html", languages=languages)
+    form = ProfileForm()
+    if request.method == 'POST' and form.validate():
+        pass
+    return render_template("preference_form.html", form=form)
 
 @app.route("/profile/<name>")
 def profile(name): 
