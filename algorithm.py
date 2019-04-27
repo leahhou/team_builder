@@ -28,15 +28,24 @@ class Person:
         if self.objective == toCompare.objective:
             pref += 1
         pref += abs(self.experience-toCompare.experience) + abs(self.idea - toCompare.idea)
-        self.preferences[toCompare] = pref
+        return pref
 
     def inGroup():
         if(self.groupMember == None):
             return True
         return False
 
+def groupSatisfaction(group):
+    output = 0
+    for i in range(0,len(group)):
+        for j in range(0,len(group)):
+            if(i!=j):
+                output += group[i].compare(group[j])
+    return output
+
 def basicSort(people, groupSize):
-    groupSize -= 1
+    groupSize = groupSize - 1
+    allGroups = []
     for run in range(0,5): # do 5 random runs of algorithm, find best grouping
         random.shuffle(people)
         peopleCopy = list(people)
@@ -44,13 +53,13 @@ def basicSort(people, groupSize):
         for i in range(0,len(people)): #get ever
             for j in range(0,len(people)):
                 if(i!=j):
-                    people[i].compare(people[j])
+                    people[i].preferences[people[j]] = people[i].compare(people[j])
             people[i].genRankings()
 
         for i in range(0,groupSize):
 
-            group1 = peopleCopy[i*(len(people)//groupSize):(i+1)*(len(people)//groupSize)]
-            group2 = peopleCopy[(i+1)*(len(people)//groupSize):min((i+2)*(len(people)//groupSize),len(people))] #getting the 2 groups to compare rankings etc
+            group1 = people[i*(len(people)//groupSize):(i+1)*(len(people)//groupSize)]
+            group2 = people[(i+1)*(len(people)//groupSize):min((i+2)*(len(people)//groupSize),len(people))] #getting the 2 groups to compare rankings etc
 
             while(len(group1) > 0): # while there are still groups to be matched with singles
                 asker = group1[0] #get asker, and who is asking
@@ -75,4 +84,29 @@ def basicSort(people, groupSize):
                 for key in toChange.preferences.keys():
                     toChange.preferences[key] = (toChange.preferences[key]+basedOff.preferences[key])/2
                 people[j].genRankings()
-        
+
+        groups = []
+        for i in range(0,len(people)//groupSize):
+            member = people[i]
+            groups.append([member])
+            while(member.groupMember != None):
+                groups[i].append(member.groupMember)
+                member = member.groupMember
+        allGroups.append(groups)
+
+    satisfactions = []
+    maxSatisfaction = 0
+    maxIndex = 0
+
+    for groupMatch in allGroups:
+        forSum = []
+        for group in groupMatch:
+            forSum.append(groupSatisfaction(group))
+        satisfactions.append(sum(forSum))
+
+    for i in range(0,len(satisfactions)):
+        if(satisfactions[i]>maxSatisfaction):
+            maxSatisfaction = satisfactions[i]
+            maxIndex = i
+
+    return allGroups[i]
