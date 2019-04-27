@@ -63,7 +63,7 @@ def basicSort(people, groupSize):
         print("RUN: " + str(run),end = ": ")
         random.shuffle(people)
         while(len(peopleCopy)%groupSize != 0):
-            blank = Person([""],"",0,"",0)
+            blank = Person(-1, [""],"",0,"",0)
             blank.setPlaceHolder()
             peopleCopy.append(blank)
 
@@ -108,7 +108,6 @@ def basicSort(people, groupSize):
         groups = []
         for i in range(0,len(peopleCopy)//groupSize):
             member = peopleCopy[i]
-            original = member
             newGroup = []
             while(member not in newGroup):
                 newGroup.append(member)

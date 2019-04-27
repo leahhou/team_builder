@@ -21,7 +21,7 @@ def login():
         for i in system.logins:
             if i.username == username:
                 if i.verify(username, password):
-                    return redirect(url_for("preference", i.id))
+                    return redirect(url_for("preference", id=i.id))
                 else:
                     errors = {}
                     errors["login"] = "Login failed"
