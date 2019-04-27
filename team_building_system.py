@@ -1,5 +1,5 @@
 from event import Event
-from profile import Person
+from algorithm import Person
 
 class TeamBuildingSystem():
     def __init__(self):
