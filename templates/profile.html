@@ -10,58 +10,34 @@
     <script src="main.js"></script>
 </head>
 <body>
-<h1>{{ profile. }} Summary</h1>
+<h1>{{ username }}'s Summary</h1>
 <div>
-    <h2>Which Position do you most prefer working in ?</h2>
+    Position: {{ profile.position }}
+</div>
+
+<div>
+    Languages:
     <li>
-        <ul>back-end</ul>
-        <ul>front-end</ul>
-        <ul>full-stack</ul>
+        {% for i in profile.languages %}
+            <ul>{{ i }}</ul>
+        {% endfor %}
     </li>
 </div>
 
 <div>
-    <h2>Languages you know</h2>
-    <li>
-        <ul>Python</ul>
-        <ul>C+</ul>
-        <ul>Java</ul>
-        <ul>C</ul>
-        <ul>Ruby</ul>
-        <ul>html</ul>
-        <ul>css</ul>
-        <ul>Javascript</ul>
-    </li>
+    Experience: {{ profile.experience }}
 </div>
 
 <div>
-    <h2>Your Experience level</h2>
-        <li>
-            <ul>0 -2 years</ul>
-            <ul>2 -3 years</ul>
-            <ul>3 -5 years</ul>
-            <ul>5 + years</ul>
-            <ul>10 + years</ul>
-        </li>
+    Objective: {{ profile.objective }}
 </div>
 
-<div>
-    <h2>What is your objective in Hackthon?</h2>
-        <li>
-            <ul>win the prize!</ul>
-            <ul>Learning new things</ul>
-            <ul>Networking</ul>
-            <ul>Others</ul>
-        </li>
-</div>
-
-<div>
-    <h2>How passionate you are for your idea?</h2>
-
-    
-
-<h2>You are matched!</h2>
-<a>Check out your team</a>
+{% if profile.groupMember is not None %}
+    <h2>You are matched!</h2>
+    <a>Check out your team</a>
+{% else %}
+    <h2>Check again later to see if you have been matched</h2>
+{% endif %}
 
 </body>
 </html>

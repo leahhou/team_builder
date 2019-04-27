@@ -53,7 +53,11 @@ def profile(id):
         if i.id == id:
             profile = i
             break
-    return render_template("profile.html", profile=profile)
+    for j in system.logins:
+        if j.id == id:
+            username = j.username
+            break
+    return render_template("profile.html", username=username, profile=profile)
 
 @app.route("/all_members/<name>")
 def all_members(name): 
