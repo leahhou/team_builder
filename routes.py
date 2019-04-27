@@ -5,6 +5,7 @@ from team_building_system import TeamBuildingSystem
 from profile import Login
 from algorithm import Person
 from event import Event
+from forms import Languages
 
 @app.route("/")
 def homepage():
@@ -31,8 +32,7 @@ def login():
 def preference(): 
     #database to store all options to display in form
     languages=["python","ruby","java","Javasript","c#","c++","PHP",
-    "html","css","Perl","swift"
-    ]
+    "html","css","Perl","swift"]
     return render_template("preference_form.html", languages=languages)
 
 @app.route("/profile/<name>")
