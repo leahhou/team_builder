@@ -57,7 +57,7 @@ def basicSort(people, groupSize):
                 toAsk = asker.rankings.pop(0) #find highest ranked in group2
                 while toAsk not in group2:
                     toAsk = asker.rankings.pop(0)
-                    
+
                 if not toAsk.inGroup(): # if not in a group, add the person to the group and remove the asker from their group
                     toAsk.groupMember = asker
                     asker.groupMember = toAsk
@@ -69,5 +69,10 @@ def basicSort(people, groupSize):
                         toAsk.groupMember = asker
                         group1.remove(asker)
 
-            for j in range(i*(k+1),min(i*(k+2),len(people))): # i tells us how many group members they have
-                toChange = peopleCopy[j] # want to edit this person's preferenes based on their group member
+            for j in range((i+1)*(len(people)//groupSize),min((i+2)*(len(people)//groupSize),len(people))): # i tells us how many group members they have
+                toChange = people[j] # want to edit this person's preferenes based on their group member
+                basedOff = toChange.groupMember
+                for key in toChange.preferences.keys():
+                    toChange.preferences[key] = (toChange.preferences[key]+basedOff.preferences[key])/2
+                people[j].genRankings()
+        
