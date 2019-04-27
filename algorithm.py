@@ -10,14 +10,15 @@ class Person:
         self.idea = idea/5 #scale from 0-2
         self.preferences = {} # Key: Person, Value: Int
         self.rankings = [] # list of Person objects
-        self.inGroup = False
         self.groupMember = None
         self.eventId = eventId
 
-    def genRankings():
-        self.rankings = sorted(preferences.items(), key=lambda vals: vals[1], reverse=True).keys()
+    def genRankings(self):
+        self.rankings = sorted(self.preferences.items(), key=lambda vals: vals[1], reverse=True)
+        for i in range(0,len(self.rankings)):
+            self.rankings[i] = self.rankings[i][0]
 
-    def compare(toCompare): # Compare 2 individuals
+    def compare(self,toCompare): # Compare 2 individuals
         pref = 0
         for lang in self.languages:
             if lang in toCompare.languages:
@@ -30,10 +31,10 @@ class Person:
         pref += abs(self.experience-toCompare.experience) + abs(self.idea - toCompare.idea)
         return pref
 
-    def inGroup():
+    def inGroup(self):
         if(self.groupMember == None):
-            return True
-        return False
+            return False
+        return True
 
 def groupSatisfaction(group):
     output = 0
@@ -44,7 +45,6 @@ def groupSatisfaction(group):
     return output
 
 def basicSort(people, groupSize):
-    groupSize = groupSize - 1
     allGroups = []
     for run in range(0,5): # do 5 random runs of algorithm, find best grouping
         random.shuffle(people)
@@ -63,9 +63,11 @@ def basicSort(people, groupSize):
 
             while(len(group1) > 0): # while there are still groups to be matched with singles
                 asker = group1[0] #get asker, and who is asking
-                toAsk = asker.rankings.pop(0) #find highest ranked in group2
-                while toAsk not in group2:
-                    toAsk = asker.rankings.pop(0)
+                for possibleAsk in asker.rankings:
+                    if possibleAsk in group2:
+                        toAsk = possibleAsk
+                        asker.rankings.remove(toAsk)
+                        break
 
                 if not toAsk.inGroup(): # if not in a group, add the person to the group and remove the asker from their group
                     toAsk.groupMember = asker
@@ -82,7 +84,8 @@ def basicSort(people, groupSize):
                 toChange = people[j] # want to edit this person's preferenes based on their group member
                 basedOff = toChange.groupMember
                 for key in toChange.preferences.keys():
-                    toChange.preferences[key] = (toChange.preferences[key]+basedOff.preferences[key])/2
+                    if(key != basedOff):
+                        toChange.preferences[key] = (toChange.preferences[key]+basedOff.preferences[key])/2
                 people[j].genRankings()
 
         groups = []
@@ -108,5 +111,16 @@ def basicSort(people, groupSize):
         if(satisfactions[i]>maxSatisfaction):
             maxSatisfaction = satisfactions[i]
             maxIndex = i
-
     return allGroups[i]
+
+def main():
+    people = []
+    people.append(Person(["Python","Java","JavaScript"],"FrontEnd",3,"Networking",10,0))
+    people.append(Person(["PHP"],"BackEnd",2,"Networking",2,0))
+    people.append(Person(["C++"],"BackEnd",1,"Prize",5,0))
+    people.append(Person(["Java"],"BackEnd",3,"Prize",7,0))
+    people.append(Person(["JavaScript"],"FrontEnd",2,"Networking",6,0))
+    people.append(Person(["Ada"],"FullStack",2,"Friends",4,0))
+    print(basicSort(people,2))
+
+main()
