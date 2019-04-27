@@ -10,3 +10,7 @@ class Profile():
         self._exp = exp
         self._idea = idea
         self._id = profile_id.next()
+    
+    @property
+    def id(self):
+        return self._id
