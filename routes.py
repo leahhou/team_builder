@@ -59,8 +59,12 @@ def profile(id):
             break
     return render_template("profile.html", username=username, profile=profile)
 
-@app.route("/all_members/<name>")
-def all_members(name): 
+@app.route("/all_members/id")
+def all_members(id):
+    for i in system.events:
+        if i.id == id:
+            event = i
+            break
     return render_template("all_members.html")
 
 @app.route("/all_teams/<name>")
