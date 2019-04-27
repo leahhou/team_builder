@@ -23,3 +23,15 @@ def homepage():
 @app.route("/profile/<name>")
   def profile(name): 
       return render_template("profile.html")
+
+@app.route("/all_members/<name>")
+  def all_members(name): 
+      return render_template("all_members.html")
+
+@app.route("/all_teams/<name>")
+  def all_teams(name): 
+      return render_template("all_teams.html")
+
+@app.route("/member_team/<name>")
+  def member_team(name): 
+      return render_template("member_team.html")
