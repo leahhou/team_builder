@@ -2,7 +2,7 @@ from id_generator import IdGenerator
 
 profile_id = IdGenerator()
 
-class Profile():
+class Person():
     def __init__(self, name, langs, pos, exp, idea):
         self._name = name
         self._langs = langs
