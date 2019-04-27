@@ -47,23 +47,25 @@ def groupSatisfaction(group):
 def basicSort(people, groupSize):
     allGroups = []
     for run in range(0,5): # do 5 random runs of algorithm, find best grouping
+        print("RUN: " + str(run))
         random.shuffle(people)
         peopleCopy = list(people)
 
-        for i in range(0,len(people)): #get ever
-            for j in range(0,len(people)):
-                if(i!=j):
-                    people[i].preferences[people[j]] = people[i].compare(people[j])
-            people[i].genRankings()
+        for i in range(0,len(peopleCopy)): #get everyones rankings of everyone else
+            for j in range(0,len(peopleCopy)):
+                if i!=j:
+                    peopleCopy[i].preferences[peopleCopy[j]] = peopleCopy[i].compare(peopleCopy[j])
+            peopleCopy[i].genRankings()
+            print(len(peopleCopy[i].rankings))
 
         for i in range(0,groupSize):
 
-            group1 = people[i*(len(people)//groupSize):(i+1)*(len(people)//groupSize)]
-            group2 = people[(i+1)*(len(people)//groupSize):min((i+2)*(len(people)//groupSize),len(people))] #getting the 2 groups to compare rankings etc
+            group1 = peopleCopy[i*(len(peopleCopy)//groupSize):(i+1)*(len(peopleCopy)//groupSize)]
+            group2 = peopleCopy[(i+1)*(len(peopleCopy)//groupSize):min((i+2)*(len(peopleCopy)//groupSize),len(peopleCopy))] #getting the 2 groups to compare rankings etc
 
             while(len(group1) > 0): # while there are still groups to be matched with singles
                 asker = group1[0] #get asker, and who is asking
-                for possibleAsk in asker.rankings:
+                for possibleAsk in asker.rankings: # highest ranking in other group
                     if possibleAsk in group2:
                         toAsk = possibleAsk
                         asker.rankings.remove(toAsk)
@@ -73,24 +75,25 @@ def basicSort(people, groupSize):
                     toAsk.groupMember = asker
                     asker.groupMember = toAsk
                     group1.remove(asker)
-                else: #if toAsk prefers the asker to their current group member - rmb that index should be LESS than!
+                else: #if toAsk prefers the asker to their current group member
+
                     if(toAsk.rankings.index(asker)<toAsk.rankings.index(toAsk.groupMember)):
                         group1.append(toAsk.groupMember)
                         toAsk.groupMember.groupMember = None
                         toAsk.groupMember = asker
                         group1.remove(asker)
 
-            for j in range((i+1)*(len(people)//groupSize),min((i+2)*(len(people)//groupSize),len(people))): # i tells us how many group members they have
-                toChange = people[j] # want to edit this person's preferenes based on their group member
+            for j in range((i+1)*(len(peopleCopy)//groupSize),min((i+2)*(len(peopleCopy)//groupSize),len(peopleCopy))): # i tells us how many group members they have
+                toChange = peopleCopy[j] # want to edit this person's preferenes based on their group member
                 basedOff = toChange.groupMember
                 for key in toChange.preferences.keys():
                     if(key != basedOff):
                         toChange.preferences[key] = (toChange.preferences[key]+basedOff.preferences[key])/2
-                people[j].genRankings()
+                peopleCopy[j].genRankings()
 
         groups = []
-        for i in range(0,len(people)//groupSize):
-            member = people[i]
+        for i in range(0,len(peopleCopy)//groupSize):
+            member = peopleCopy[i]
             groups.append([member])
             while(member.groupMember != None):
                 groups[i].append(member.groupMember)
@@ -122,5 +125,8 @@ def main():
     people.append(Person(["JavaScript"],"FrontEnd",2,"Networking",6,0))
     people.append(Person(["Ada"],"FullStack",2,"Friends",4,0))
     print(basicSort(people,2))
+
+
+
 
 main()
