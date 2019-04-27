@@ -4,7 +4,7 @@ import copy
 from team import Team
 
 class Person:
-    def __init__(self, id, languages, position, experience, objective, idea, event):
+    def __init__(self, id, languages, position, experience, objective, idea, eventId):
         self._id = id
         self._languages = languages #list of strings, only need language 1 to match
         self._position = position #strings - frontend, backend, fullstack
@@ -14,7 +14,7 @@ class Person:
         self._preferences = {} # Key: Person, Value: Int
         self._rankings = [] # list of Person objects
         self._groupMember = None
-        self._event = event
+        self._event = eventId
         self._placeholder = False
 
     def genRankings(self):
@@ -83,7 +83,7 @@ class Person:
 
     @preferences.setter
     def prefernces(self,preferences):
-        self._preferences = replace
+        self._preferences = preferences
 
     @property
     def rankings(self):
@@ -104,8 +104,8 @@ class Person:
     @property
     def event(self):
         return self._eventId
-
-    @events.setter
+    
+    @event.setter
     def event(self,eventId):
         self._eventId = eventId
 
@@ -144,8 +144,8 @@ def basicSort(people, groupSize):
         print("RUN: " + str(run),end = ": ")
         random.shuffle(people)
         while(len(peopleCopy)%groupSize != 0):
-            blank = Person(-1, [""],"",0,"",0)
-            blank.setIsPlaceHolder(True)
+            blank = Person(-1, [""],"",0,"",0, -1)
+            blank.setPlaceHolder()
             peopleCopy.append(blank)
 
         for i in range(0,len(peopleCopy)): #get everyones rankings of everyone else
