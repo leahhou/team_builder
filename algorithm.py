@@ -36,6 +36,9 @@ class Person:
             return False
         return True
 
+    def __repr__(self):
+        return self.languages[0]
+
 def groupSatisfaction(group):
     output = 0
     for i in range(0,len(group)):
@@ -77,6 +80,7 @@ def basicSort(people, groupSize):
                     if(toAsk.rankings.index(asker)<toAsk.rankings.index(toAsk.groupMember)):
                         group1.append(toAsk.groupMember)
                         toAsk.groupMember = asker
+                        asker.groupMember = toAsk
                         group1.remove(asker)
 
             for j in range((i+1)*(len(peopleCopy)//groupSize),min((i+2)*(len(peopleCopy)//groupSize),len(peopleCopy))): # i tells us how many group members they have
@@ -87,15 +91,16 @@ def basicSort(people, groupSize):
                         toChange.preferences[key] = (toChange.preferences[key]+basedOff.preferences[key])/2
                 peopleCopy[j].genRankings()
 
+        #import pdb; pdb.set_trace();
         groups = []
         for i in range(0,len(peopleCopy)//groupSize):
             member = peopleCopy[i]
             original = member
-            member = member.groupMember
-            groups.append([])
-            while(member not in groups[i]):
-                groups[i].append(member)
+            newGroup = []
+            while(member not in newGroup):
+                newGroup.append(member)
                 member = member.groupMember
+            groups.append(newGroup)
         allGroups.append(groups)
 
     satisfactions = []
@@ -122,9 +127,6 @@ def main():
     people.append(Person(["Java"],"BackEnd",3,"Prize",7,0))
     people.append(Person(["JavaScript"],"FrontEnd",2,"Networking",6,0))
     people.append(Person(["Ada"],"FullStack",2,"Friends",4,0))
-    print(basicSort(people,2))
-
-
-
+    print(basicSort(people,2)) #groups of 2
 
 main()
