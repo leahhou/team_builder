@@ -11,32 +11,23 @@
 </head>
 <body>
 <h1>Preference Questionnaire</h1>
-
+<form>
 <div>
-    <h2>Positions you have worked in</h2>
-    <li>
-        <ul>back-end</ul>
-        <ul>front-end</ul>
-        <ul>full-stack</ul>
-    </li>
+    <h3>Positions you have worked in</h3>
+        <input type="checkbox" name="dev_role" value="back-end"> back-end 
+        <input type="checkbox" name="dev_role" value="front-end"> front-end 
+        <input type="checkbox" name="dev_role" value="full-stack"> full-stack  
 </div>
 
 <div>
-    <h2>Languages you know</h2>
-    <li>
-        <ul>Python</ul>
-        <ul>C+</ul>
-        <ul>Java</ul>
-        <ul>C</ul>
-        <ul>Ruby</ul>
-        <ul>html</ul>
-        <ul>css</ul>
-        <ul>Javascript</ul>
-    </li>
+    <h3>Languages you know</h3>
+    {% for item in languages %}
+        {{ item }}
+    {% endfor %}
 </div>
 
 <div>
-    <h2>Your Experience level</h2>
+    <h3>Your Experience level</h3>
         <li>
             <ul>0 -2 years</ul>
             <ul>2 -3 years</ul>
@@ -47,7 +38,7 @@
 </div>
 
 <div>
-    <h2>What is your objective in Hackthon?</h2>
+    <h3>What is your objective in Hackthon?</h3>
         <li>
             <ul>win the prize!</ul>
             <ul>Learning new things</ul>
@@ -57,7 +48,7 @@
 </div>
 
 <div>
-    <h2>How passionate you are for your idea?</h2>
+    <h3>How passionate you are for your idea?</h3>
     <li>
         <ul>1 I am very happy to helpe others build on their ideas</ul>
         <ul>2</ul>
@@ -71,6 +62,8 @@
         <ul>10 I am really passionate about making my idea come true!</ul>
     </li>
 </div>
+
+</form>
 
 </body>
 </html>

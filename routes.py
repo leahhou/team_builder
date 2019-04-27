@@ -11,14 +11,14 @@ def homepage():
           # retrieve login details
           username = request.form["username"]
           password = request.form["password"]
-          print(username,password)
-
           return redirect(url_for("preference.html"))
       return render_template("login.html")
 
-@app.route("/preference/<name>", method=["POST"])
-  def preference(name): 
-      return render_template("preference_form.html")
+@app.route("/preference/", method=["POST"])
+  def preference(): 
+      #database to store all options to display in form
+      languages=["python","ruby"]
+      return render_template("preference_form.html", languages=languages)
 
 @app.route("/profile/<name>")
   def profile(name): 
