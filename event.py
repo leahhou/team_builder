@@ -1,4 +1,5 @@
 from id_generator import IdGenerator
+from algorithm import Person
 
 event_id = IdGenerator()
 
