@@ -1,5 +1,6 @@
 import math
 import random
+import copy
 
 class Person:
     def __init__(self, languages, position, experience, objective, idea, eventId):
@@ -12,6 +13,7 @@ class Person:
         self.rankings = [] # list of Person objects
         self.groupMember = None
         self.eventId = eventId
+        self.placeholder = False
 
     def genRankings(self):
         self.rankings = sorted(self.preferences.items(), key=lambda vals: vals[1], reverse=True)
@@ -19,6 +21,8 @@ class Person:
             self.rankings[i] = self.rankings[i][0]
 
     def compare(self,toCompare): # Compare 2 individuals
+        if(toCompare.placeholder):
+            return 1
         pref = 0
         for lang in self.languages:
             if lang in toCompare.languages:
@@ -36,6 +40,9 @@ class Person:
             return False
         return True
 
+    def setPlaceHolder(self):
+        self.placeholder = True
+
     def __repr__(self):
         return self.languages[0]
 
@@ -48,11 +55,16 @@ def groupSatisfaction(group):
     return output
 
 def basicSort(people, groupSize):
+
     allGroups = []
-    for run in range(0,1): # do 5 random runs of algorithm, find best grouping
+    for run in range(0,5): # do 5 random runs of algorithm, find best grouping
+        peopleCopy = copy.deepcopy(people)
         print("RUN: " + str(run))
         random.shuffle(people)
-        peopleCopy = list(people)
+        while(len(peopleCopy)%groupSize != 0):
+            blank = Person([""],"",0,"",0,0)
+            blank.setPlaceHolder()
+            peopleCopy.append(blank)
 
         for i in range(0,len(peopleCopy)): #get everyones rankings of everyone else
             for j in range(0,len(peopleCopy)):
@@ -102,6 +114,7 @@ def basicSort(people, groupSize):
                 member = member.groupMember
             groups.append(newGroup)
         allGroups.append(groups)
+        print(groups)
 
     satisfactions = []
     maxSatisfaction = 0
@@ -126,7 +139,8 @@ def main():
     people.append(Person(["C++"],"BackEnd",1,"Prize",5,0))
     people.append(Person(["Java"],"BackEnd",3,"Prize",7,0))
     people.append(Person(["JavaScript"],"FrontEnd",2,"Networking",6,0))
+    people.append(Person(["C#"],"FrontEnd",2,"Networking",6,0))
     people.append(Person(["Ada"],"FullStack",2,"Friends",4,0))
-    print(basicSort(people,2)) #groups of 2
+    print(basicSort(people,4)) #groups of 2
 
 main()
