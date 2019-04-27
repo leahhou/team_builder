@@ -9,6 +9,7 @@ class Event():
         self._host = host
         self._desc = desc
         self._participants = []
+        self._teams = []
     
     def add_participant(self, profile):
         self._participants.append(profile)
