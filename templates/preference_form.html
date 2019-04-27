@@ -5,15 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Summary of Members</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="normalize.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
-    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
 </head>
 <body>
 <h1>Preference Questionnaire</h1>
 <form method="POST">
     <div>{{ form.position.label }} {{ form.position() }}</div>
-    <div>{{ form.languages.label }} {{ form.languages() }}</div>
+    <div>{{ form.languages.label }}
+        {{ form.languages() }}</div>
+    <div>{{ form.experience.label }} {{form.experience()}}</div>
+    <div>{{ form.objective.label }} {{form.objective()}}</div>
+    <div>{{ form.ideas.label }} {{ form.ideas() }}</div>
+    <div>{{ form.submit() }} {{ form.cancel() }}</div>
 </form>
 </body>
 </html>

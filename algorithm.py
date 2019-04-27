@@ -3,7 +3,8 @@ import random
 import copy
 
 class Person:
-    def __init__(self, languages, position, experience, objective, idea):
+    def __init__(self, id, languages, position, experience, objective, idea):
+        self._id = id
         self.languages = languages #list of strings, only need language 1 to match
         self.position = position #strings - frontend, backend, fullstack
         self.experience = experience #int from 0-3
