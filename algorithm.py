@@ -3,7 +3,7 @@ import random
 import copy
 
 class Person:
-    def __init__(self, id, languages, position, experience, objective, idea):
+    def __init__(self, id, languages, position, experience, objective, idea, eventId):
         self._id = id
         self._languages = languages #list of strings, only need language 1 to match
         self._position = position #strings - frontend, backend, fullstack
@@ -13,7 +13,7 @@ class Person:
         self._preferences = {} # Key: Person, Value: Int
         self._rankings = [] # list of Person objects
         self._groupMember = None
-        self._events = []
+        self._event = eventId
         self._placeholder = False
 
     def genRankings(self):
@@ -101,11 +101,11 @@ class Person:
         self._groupMember = groupMember
     
     @property
-    def events(self):
+    def event(self):
         return self._eventId
     
-    @events.setter
-    def events(self,eventId):
+    @event.setter
+    def event(self,eventId):
         self._eventId = eventId
     
     @property
@@ -143,7 +143,7 @@ def basicSort(people, groupSize):
         print("RUN: " + str(run),end = ": ")
         random.shuffle(people)
         while(len(peopleCopy)%groupSize != 0):
-            blank = Person(-1, [""],"",0,"",0)
+            blank = Person(-1, [""],"",0,"",0, -1)
             blank.setPlaceHolder()
             peopleCopy.append(blank)
 
