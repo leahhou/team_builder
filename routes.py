@@ -1,5 +1,9 @@
-from flask import flask, request, render_template, url_for, abort
+from flask import request, render_template, redirect, url_for, abort
 from server import app, system
+
+from team_building_system import TeamBuildingSystem
+from algorithm import Person
+from event import Event
 
 @app.route("/")
 def homepage():
@@ -20,6 +24,7 @@ def homepage():
       languages=["python","ruby"]
       return render_template("preference_form.html", languages=languages)
 
+
 @app.route("/profile/<name>")
-  def profile(name): 
-      return render_template("profile.html")
+def profile(name): 
+    return render_template("profile.html")
