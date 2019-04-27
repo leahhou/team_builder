@@ -38,6 +38,9 @@ class Person:
         return pref
 
     @property
+    def id(self):
+        return self._id
+    @property
     def languages(self):
         return self._languages
 

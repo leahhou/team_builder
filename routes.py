@@ -32,7 +32,7 @@ def login():
 def preference(id): 
     form = ProfileForm()
     print(form.validate())
-    print(form.ideas.data)
+    # print(form.ideas.data)
     if request.method == 'POST':
         print("in this statement")
         position = form.position.data
@@ -56,6 +56,7 @@ def profile(id):
     for j in system.logins:
         if j.id == id:
             username = j.username
+            print(username)
             break
     return render_template("profile.html", username=username, profile=profile)
 

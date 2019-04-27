@@ -6,6 +6,8 @@ $body-font: 'Poppins', Helvetica, Arial, sans-serif;
 
 
 @import "preference";
+@import "profile";
+@import "login";
 
 @mixin title-font {
     font-family: $title-font;
