@@ -29,6 +29,49 @@ p {
     flex-direction: row;
     justify-content: center;
 }
+#teams_all {
+    .team {
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-content: space-between;
+        z-index: 3;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 3;
+        }
+        h2 {
+            display: inline-flex;
+            color: rgb(10, 117, 247);
+        }
+    }
+    .team1 {
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-content: space-between;
+        z-index: 3;
+        background-color: rgb(10, 117, 247);
+
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 3;
+        }
+        h2 {
+            display: inline-flex;
+            color: white;
+        }
+    }
+}
 #members_all {
     background-color:white;
     background-size: cover;
@@ -49,40 +92,8 @@ p {
             z-index: 3;
         }
     }
-    #teams_all {
-        .team {
-            width: 100vw;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-            align-content: space-between;
-            z-index: 3;
+}
     
-            div {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                z-index: 3;
-            }
-        }
-        .team1 {
-            width: 100vw;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-            align-content: space-between;
-            z-index: 3;
-            background-color: #0B131D;
-    
-            div {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                z-index: 3;
-            }
-        }
         #one_team {
             .team {
                 width: 100vw;
@@ -101,10 +112,9 @@ p {
                 }
             }
         }
-    }
+    
     footer {
         p {
             text-align: center
         }
     }
-}
