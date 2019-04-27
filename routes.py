@@ -67,7 +67,7 @@ def all_members(id):
             break
     return render_template("all_members.html", event=event)
 
-@app.route("/all_teams")
+@app.route("/all_teams/<id>")
 def all_teams(id):
     for i in system.events:
         if i.id == id:

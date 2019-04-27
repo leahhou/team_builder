@@ -10,9 +10,9 @@ class Person:
         self._position = position #strings - frontend, backend, fullstack
         self._experience = experience #int from 0-3
         self._objective = objective #string Prize, Learn, Network, Other
-        self._idea = idea/5 #scale from 0-2
-        self._preferences = {} # Key: Person, Value: Int
-        self._rankings = [] # list of Person objects
+        self._idea = idea/5 #{} # Key: Person, Value: Int
+        self._rankings = [] # liscale from 0-2
+        self._preferences = {}
         self._groupMember = None
         self._events = []
         self._placeholder = False
@@ -83,7 +83,7 @@ class Person:
 
     @preferences.setter
     def prefernces(self,preferences):
-        self._preferences = replace
+        self._preferences = preferences
 
     @property
     def rankings(self):
@@ -215,7 +215,7 @@ def basicSort(people, groupSize):
     toConvert = allGroups[maxIndex]
     output = []
     for indTeam in toConvert:
-        toAdd = Team()
+        toAdd = Team(people[0].event)
         for person in indTeam:
             if not person.placeholder:
                 toAdd.add_member(person)
