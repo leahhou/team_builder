@@ -22,6 +22,26 @@ body {
   align-items: center;
 }
 
+.profile {
+  font-family: Poppins;
+}
+
+div {
+  font-size: 20pt;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  font-size: 20pt;
+}
+
+h3 {
+  font-size: 10pt;
+}
+
 h1 {
   font-family: "Gothic", Helvetica, Arial, sans-serif;
   font-size: 40px;
