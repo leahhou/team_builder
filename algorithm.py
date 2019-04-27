@@ -46,7 +46,7 @@ def groupSatisfaction(group):
 
 def basicSort(people, groupSize):
     allGroups = []
-    for run in range(0,5): # do 5 random runs of algorithm, find best grouping
+    for run in range(0,1): # do 5 random runs of algorithm, find best grouping
         print("RUN: " + str(run))
         random.shuffle(people)
         peopleCopy = list(people)
@@ -56,13 +56,11 @@ def basicSort(people, groupSize):
                 if i!=j:
                     peopleCopy[i].preferences[peopleCopy[j]] = peopleCopy[i].compare(peopleCopy[j])
             peopleCopy[i].genRankings()
-            print(len(peopleCopy[i].rankings))
 
-        for i in range(0,groupSize):
+        for i in range(0,groupSize-1):
 
             group1 = peopleCopy[i*(len(peopleCopy)//groupSize):(i+1)*(len(peopleCopy)//groupSize)]
             group2 = peopleCopy[(i+1)*(len(peopleCopy)//groupSize):min((i+2)*(len(peopleCopy)//groupSize),len(peopleCopy))] #getting the 2 groups to compare rankings etc
-
             while(len(group1) > 0): # while there are still groups to be matched with singles
                 asker = group1[0] #get asker, and who is asking
                 for possibleAsk in asker.rankings: # highest ranking in other group
@@ -76,10 +74,8 @@ def basicSort(people, groupSize):
                     asker.groupMember = toAsk
                     group1.remove(asker)
                 else: #if toAsk prefers the asker to their current group member
-
                     if(toAsk.rankings.index(asker)<toAsk.rankings.index(toAsk.groupMember)):
                         group1.append(toAsk.groupMember)
-                        toAsk.groupMember.groupMember = None
                         toAsk.groupMember = asker
                         group1.remove(asker)
 
@@ -94,10 +90,14 @@ def basicSort(people, groupSize):
         groups = []
         for i in range(0,len(peopleCopy)//groupSize):
             member = peopleCopy[i]
+            original = member
+            member = member.groupMember
             groups.append([member])
-            while(member.groupMember != None):
+            while(original!=member):
                 groups[i].append(member.groupMember)
                 member = member.groupMember
+        for i in groups:
+            print(i[0].languages,i[1].languages)
         allGroups.append(groups)
 
     satisfactions = []
