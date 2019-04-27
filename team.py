@@ -10,6 +10,10 @@ class Team:
 
     def add_member(self, person):
         self._members.append(person)
+    
+    @property
+    def members(self):
+        return self._members
 
     def __repr__(self):
         return str(self._members)

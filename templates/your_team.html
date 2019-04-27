@@ -1,5 +1,9 @@
 <h1>Your team members</h1>
-<p>[name one] link to their profile</p> 
-<p>[name one] link to their profile</p>
-<p>[name one] link to their profile</p>
-<p>[name one] link to their profile</p>
+{% for i in team.members %}
+    {% id = i.id %}
+    {% for j in logins %}
+        {% if j.id == id %}
+            <a href="/profile/{id}">{{ j.username }}</a>
+        {% endif %}
+    (% endfor %)
+{% endfor %}
