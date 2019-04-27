@@ -26,6 +26,46 @@ p {
   justify-content: center;
 }
 
+#teams_all .team {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: space-between;
+  z-index: 3;
+}
+#teams_all .team div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+#teams_all .team h2 {
+  display: inline-flex;
+  color: #0a75f7;
+}
+#teams_all .team1 {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: space-between;
+  z-index: 3;
+  background-color: #0a75f7;
+}
+#teams_all .team1 div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+#teams_all .team1 h2 {
+  display: inline-flex;
+  color: white;
+}
+
 #members_all {
   background-color: white;
   background-size: cover;
@@ -47,7 +87,8 @@ p {
   align-items: center;
   z-index: 3;
 }
-#members_all #teams_all .team {
+
+#one_team .team {
   width: 100vw;
   display: flex;
   flex-direction: row;
@@ -55,45 +96,15 @@ p {
   align-content: space-between;
   z-index: 3;
 }
-#members_all #teams_all .team div {
+#one_team .team div {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 3;
 }
-#members_all #teams_all .team1 {
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-content: space-between;
-  z-index: 3;
-  background-color: #0B131D;
-}
-#members_all #teams_all .team1 div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 3;
-}
-#members_all #teams_all #one_team .team {
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-content: space-between;
-  z-index: 3;
-}
-#members_all #teams_all #one_team .team div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 3;
-}
-#members_all footer p {
+
+footer p {
   text-align: center;
 }
 
