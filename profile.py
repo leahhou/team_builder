@@ -21,7 +21,3 @@ class Login():
     @property
     def username(self):
         return self._username
-    
-    @property
-    def password(self):
-        return self._password
