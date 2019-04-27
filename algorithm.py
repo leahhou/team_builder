@@ -5,16 +5,16 @@ import copy
 class Person:
     def __init__(self, id, languages, position, experience, objective, idea):
         self._id = id
-        self.languages = languages #list of strings, only need language 1 to match
-        self.position = position #strings - frontend, backend, fullstack
-        self.experience = experience #int from 0-3
-        self.objective = objective #string Prize, Learn, Network, Other
-        self.idea = idea/5 #scale from 0-2
-        self.preferences = {} # Key: Person, Value: Int
-        self.rankings = [] # list of Person objects
-        self.groupMember = None
-        self.events = []
-        self.placeholder = False
+        self._languages = languages #list of strings, only need language 1 to match
+        self._position = position #strings - frontend, backend, fullstack
+        self._experience = experience #int from 0-3
+        self._objective = objective #string Prize, Learn, Network, Other
+        self._idea = idea/5 #scale from 0-2
+        self._preferences = {} # Key: Person, Value: Int
+        self._rankings = [] # list of Person objects
+        self._groupMember = None
+        self._events = []
+        self._placeholder = False
 
     def genRankings(self):
         self.rankings = sorted(self.preferences.items(), key=lambda vals: vals[1], reverse=True)
@@ -37,40 +37,92 @@ class Person:
         return pref
     
     @property
-    def getPreferences(self):
+    def languages(self):
+        return self._languages
+    
+    @languages.setter
+    def languages(self, languages):
+        self._languages = languages
+    
+    @property
+    def position(self):
+        return self._position
+
+    @position.setter
+    def position(self, position):
+        self._position = position
+    
+    @property
+    def experience(self):
+        return self._experience
+    
+    @experience.setter
+    def experience(self, experience):
+        self._experience = experience
+    
+    @property
+    def objective(self):
+        return self._objective
+    
+    @objective.setter
+    def objective(self, objective):
+        self._objective = objective
+    
+    @property
+    def idea(self):
+        return self._idea
+
+    @idea.setter
+    def idea(self, idea):
+        self._idea = idea
+
+    @property
+    def preferences(self):
         return self._preferences
+    
     @preferences.setter
-    def setPrefernces(self,preferences):
+    def prefernces(self,preferences):
         self._preferences = replace
+    
     @property
-    def getRankings(self):
+    def rankings(self):
         return self._rankings
+    
     @rankings.setter
-    def setRankings(self,rankings):
+    def rankings(self,rankings):
         self._rankings = rankings
+    
     @property
-    def getGroupMember(self):
+    def groupMember(self):
         return self._groupMember
+    
     @groupMember.setter
-    def setGroupMember(self,groupMember):
+    def groupMember(self,groupMember):
         self._groupMember = groupMember
+    
     @property
-    def getEventId(self):
+    def events(self):
         return self._eventId
-    @eventId.setter
-    def setEventId(self,eventId):
+    
+    @events.setter
+    def events(self,eventId):
         self._eventId = eventId
+    
     @property
-    def isPlaceholder(self):
+    def placeholder(self):
         return self._placeholder
+    
     @placeholder.setter
-    def setIsPlaceholder(self,placeholder):
+    def placeholder(self,placeholder):
         self._placeholder = placeholder
     
     def inGroup(self):
         if(self.groupMember == None):
             return False
         return True
+
+    def setPlaceHolder(self):
+        self.placeholder = True
 
     def __repr__(self):
         return self.languages[0]
