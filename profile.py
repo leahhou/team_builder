@@ -9,3 +9,4 @@ class Profile():
         self._pos = pos
         self._exp = exp
         self._idea = idea
+        self._id = profile_id.next()
