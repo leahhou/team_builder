@@ -13,7 +13,7 @@
 <h1>Preference Questionnaire</h1>
 <form>
 <div>
-    <h3>Which positions do you most preferred to worke in?</h3>
+    <h3>Which positions do you most prefer working in ?</h3>
         <input type="radio" name="dev_role" value="back-end"> back-end 
         <input type="radio" name="dev_role" value="front-end"> front-end 
         <input type="radio" name="dev_role" value="full-stack"> full-stack  
@@ -22,7 +22,7 @@
 <div>
     <h3>Languages you know</h3>
     {% for item in languages %}
-        {{ item }}
+    <input type="checkbox" name="langues" value="{{ item }}"> {{ item }}
     {% endfor %}
 </div>
 
@@ -47,6 +47,7 @@
     <input type="range" min="1" max="10">
     10: you really want to work on your idea
 </div>
+
 </form>
 </body>
 </html>
