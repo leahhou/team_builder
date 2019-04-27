@@ -35,14 +35,36 @@ class Person:
             pref += 1
         pref += abs(self.experience-toCompare.experience) + abs(self.idea - toCompare.idea)
         return pref
+    
+    def getPreferences(self):
+        return self._preferences
+    def setPrefernces(self,preferences):
+        self._preferences = replace
+
+    def getRankings(self):
+        return self._rankings
+    def setRankings(self,rankings):
+        self._rankings = rankings
+
+    def getGroupMember(self):
+        return self._groupMember
+    def setGroupMember(self,groupMember):
+        self._groupMember = groupMember
+
+    def getEventId(self):
+        return self._eventId
+    def setEventId(self,eventId):
+        self._eventId = eventId
+
+    def isPlaceholder(self):
+        return self._placeholder
+    def setIsPlaceholder(self,placeholder):
+        self._placeholder = placeholder
 
     def inGroup(self):
         if(self.groupMember == None):
             return False
         return True
-
-    def setPlaceHolder(self):
-        self.placeholder = True
 
     def __repr__(self):
         return self.languages[0]
@@ -64,7 +86,7 @@ def basicSort(people, groupSize):
         random.shuffle(people)
         while(len(peopleCopy)%groupSize != 0):
             blank = Person(-1, [""],"",0,"",0)
-            blank.setPlaceHolder()
+            blank.setIsPlaceHolder(True)
             peopleCopy.append(blank)
 
         for i in range(0,len(peopleCopy)): #get everyones rankings of everyone else
