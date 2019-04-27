@@ -16,6 +16,7 @@ class Event():
     def add_participant(self, profile):
         self._participants.append(profile)
         self._attendees += 1
+        profile.event.append(self._id)
     
     def remove_participant(self, id):
         for i in self._participants:

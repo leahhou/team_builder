@@ -31,23 +31,29 @@ def login():
 @app.route("/preference/<id>", methods=["POST","GET"])
 def preference(id): 
     form = ProfileForm()
-    if request.method == 'POST' and form.validate() and form.submit.data:
+    print(form.validate())
+    print(form.ideas.data)
+    if request.method == 'POST':
+        print("in this statement")
         position = form.position.data
         languages = form.languages.data
         experience = form.experience.data
         objective = form.objective.data
-        ideas = form.ideas.data
+        ideas = 1
 
         new = Person(id, languages, position, experience, objective, ideas)
         system.add_profile(new)
-        return redirect(url_for("profile"), id)
+        return redirect(url_for("profile", id=id))
 
-
-    return render_template("preference_form.html", form=form)
+    return render_template("preference_form.html", form=form, id=id)
 
 @app.route("/profile/<id>")
 def profile(id):
-    return render_template("profile.html")
+    for i in system.profiles:
+        if i.id == id:
+            profile = i
+            break
+    return render_template("profile.html", profile=profile)
 
 @app.route("/all_members/<name>")
 def all_members(name): 
