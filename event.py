@@ -32,3 +32,7 @@ class Event():
     @teams.setter
     def teams(self, teams):
         self._teams = teams
+    
+    @property
+    def id(self):
+        return self._id

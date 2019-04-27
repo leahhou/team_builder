@@ -25,3 +25,7 @@ class TeamBuildingSystem():
     @property
     def profiles(self):
         return self._profiles
+
+    @property
+    def events(self):
+        return self._events

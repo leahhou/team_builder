@@ -3,7 +3,7 @@ import random
 import copy
 
 class Person:
-    def __init__(self, id, languages, position, experience, objective, idea):
+    def __init__(self, id, languages, position, experience, objective, idea, event):
         self._id = id
         self._languages = languages #list of strings, only need language 1 to match
         self._position = position #strings - frontend, backend, fullstack
@@ -13,7 +13,7 @@ class Person:
         self._preferences = {} # Key: Person, Value: Int
         self._rankings = [] # list of Person objects
         self._groupMember = None
-        self._events = []
+        self._event = event
         self._placeholder = False
 
     def genRankings(self):
@@ -101,11 +101,11 @@ class Person:
         self._groupMember = groupMember
     
     @property
-    def events(self):
+    def event(self):
         return self._eventId
     
     @events.setter
-    def events(self,eventId):
+    def event(self,eventId):
         self._eventId = eventId
     
     @property
