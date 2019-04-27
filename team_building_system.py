@@ -7,6 +7,7 @@ class TeamBuildingSystem():
         self._events = []
         self._profiles = []
         self._logins = []
+        self._teams= []
     
     def add_event(self, location, host, desc):
         event = Event(location, host, desc)
@@ -17,6 +18,9 @@ class TeamBuildingSystem():
     
     def add_profile(self, profile):
         self._profiles.append(profile)
+
+    def add_team(self, team):
+        self._teams.append(team)
     
     @property
     def logins(self):
@@ -29,3 +33,7 @@ class TeamBuildingSystem():
     @property
     def events(self):
         return self._events
+    
+    @property
+    def teams(self):
+        return self._teams

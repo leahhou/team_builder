@@ -4,7 +4,7 @@ import copy
 from team import Team
 
 class Person:
-    def __init__(self, id, languages, position, experience, objective, idea, eventId):
+    def __init__(self, id, languages, position, experience, objective, idea):
         self._id = id
         self._languages = languages #list of strings, only need language 1 to match
         self._position = position #strings - frontend, backend, fullstack
@@ -14,7 +14,7 @@ class Person:
         self._preferences = {} # Key: Person, Value: Int
         self._rankings = [] # list of Person objects
         self._groupMember = None
-        self._event = eventId
+        self._events = []
         self._placeholder = False
 
     def genRankings(self):
@@ -86,7 +86,7 @@ class Person:
 
     @preferences.setter
     def prefernces(self,preferences):
-        self._preferences = preferences
+        self._preferences = replace
 
     @property
     def rankings(self):
@@ -105,11 +105,11 @@ class Person:
         self._groupMember = groupMember
 
     @property
-    def event(self):
+    def events(self):
         return self._eventId
-    
-    @event.setter
-    def event(self,eventId):
+
+    @events.setter
+    def events(self,eventId):
         self._eventId = eventId
 
     @property
@@ -126,7 +126,7 @@ class Person:
         return True
 
     def setPlaceHolder(self):
-        self.placeholder = True
+        self._placeholder = True
 
     def __repr__(self):
         return self.languages[0]
@@ -147,7 +147,7 @@ def basicSort(people, groupSize):
         print("RUN: " + str(run),end = ": ")
         random.shuffle(people)
         while(len(peopleCopy)%groupSize != 0):
-            blank = Person(-1, [""],"",0,"",0, -1)
+            blank = Person(-1, [""],"",0,"",0)
             blank.setPlaceHolder()
             peopleCopy.append(blank)
 
@@ -220,7 +220,8 @@ def basicSort(people, groupSize):
     for indTeam in toConvert:
         toAdd = Team()
         for person in indTeam:
-            toAdd.add_member(person)
+            if not person.placeholder:
+                toAdd.add_member(person)
         output.append(toAdd)
 
     return output
