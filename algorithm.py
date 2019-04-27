@@ -83,7 +83,7 @@ class Person:
 
     @preferences.setter
     def prefernces(self,preferences):
-        self._preferences = replace
+        self._preferences = preferences
 
     @property
     def rankings(self):

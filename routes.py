@@ -41,7 +41,7 @@ def preference(id):
         objective = form.objective.data
         ideas = 1
 
-        new = Person(id, languages, position, experience, objective, ideas)
+        new = Person(id, languages, position, experience, objective, ideas, 0)
         system.add_profile(new)
         return redirect(url_for("profile", id=id))
 
@@ -65,7 +65,7 @@ def all_members(id):
         if i.id == id:
             event = i
             break
-    return render_template("all_members.html")
+    return render_template("all_members.html", event=event)
 
 @app.route("/all_teams/<name>")
 def all_teams(name): 
