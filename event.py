@@ -24,3 +24,11 @@ class Event():
                 self._participants.remove(i)
                 self._attendees -= 1
                 break
+
+    @property
+    def teams(self):
+        return self._teams
+
+    @teams.setter
+    def teams(self, teams):
+        self._teams = teams

@@ -1,5 +1,6 @@
 from event import Event
 from algorithm import Person
+from profile import Login
 
 class TeamBuildingSystem():
     def __init__(self):
@@ -20,3 +21,7 @@ class TeamBuildingSystem():
     @property
     def logins(self):
         return self._logins
+    
+    @property
+    def profiles(self):
+        return self._profiles
