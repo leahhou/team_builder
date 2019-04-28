@@ -3,7 +3,7 @@ from server import app, system
 
 from team_building_system import TeamBuildingSystem
 from profile import Login
-from algorithm import Person
+from algorithm import Person, basicSort
 from event import Event
 from forms import ProfileForm
 
@@ -76,13 +76,11 @@ def all_members(id):
             break
     return render_template("all_members.html", event=event)
 
-@app.route("/all_teams/<id>")
-def all_teams(id):
-    for i in system.events:
-        if i.id == id:
-            event = i
-            break
-    return render_template("all_teams.html", event=event)
+@app.route("/all_teams/")
+def all_teams():
+    for i in system.events[0].teams:
+        print(i)
+    return render_template("all_teams.html", event=system.events[0], users=system.logins)
 
 @app.route("/member_team/<event_id>/<id>")
 def member_team(event_id, id):
@@ -100,3 +98,8 @@ def member_team(event_id, id):
 @app.route('/css/<path:path>')
 def send_css(path):
     return send_from_directory('css', path)
+
+@app.route('/sort')
+def sort():
+    system.events[0].teams = basicSort(system.profiles, 4)
+    return render_template("all_teams.html", event=system.events[0], users=system.logins)

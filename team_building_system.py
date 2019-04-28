@@ -9,8 +9,7 @@ class TeamBuildingSystem():
         self._logins = []
         self._teams= []
     
-    def add_event(self, location, host, desc):
-        event = Event(location, host, desc)
+    def add_event(self, event):
         self._events.append(event)
     
     def add_login(self, login):

@@ -36,3 +36,7 @@ class Event():
     @property
     def id(self):
         return self._id
+
+    @property
+    def participants(self):
+        return self._participants

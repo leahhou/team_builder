@@ -14,13 +14,14 @@
     <section id="teams_all">
             <div class="team">
                 {% for i in event.teams %}
-                    <h2>Team {{team.id}}</h2>
-
-                <h2>Team 1</h2>
-                <div>
-                    <p>[member name]</p>
-                    <a href="[member 1 profile]"><img src="[find image for person icon]" alt="[member1]" /></a>
-                </div>
+                    <h2>Team {{ i.id }}</h2>
+                        {% for member in i.members %}
+                        <div>
+                            <h3>{{ users[member.id].username }}</h3>
+                            <p>{{ member }}</p>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
                                              
             </div>
         </section>

@@ -17,3 +17,7 @@ class Team:
 
     def __repr__(self):
         return str(self._members)
+    
+    @property
+    def id(self):
+        return self._id

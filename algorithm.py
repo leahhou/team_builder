@@ -14,7 +14,7 @@ class Person:
         self._rankings = [] # liscale from 0-2
         self._preferences = {}
         self._groupMember = None
-        self._events = []
+        self._event = []
         self._placeholder = False
 
     def genRankings(self):
@@ -24,7 +24,7 @@ class Person:
 
     def compare(self,toCompare): # Compare 2 individuals
         if(toCompare.placeholder):
-            return 1
+            return 0
         pref = 0
         for lang in self.languages:
             if lang in toCompare.languages:
@@ -36,6 +36,10 @@ class Person:
             pref += 1
         pref += abs(self.experience-toCompare.experience) + abs(self.idea - toCompare.idea)
         return pref
+    
+    def __str__(self):
+        return f"""Languages: {self._languages[0]}\nExperience: {self._experience}\nPosition: {self._position}
+                Objective: {self._objective}\nIdea: {self._idea}"""
 
     @property
     def id(self):
@@ -105,12 +109,12 @@ class Person:
         self._groupMember = groupMember
 
     @property
-    def events(self):
-        return self._eventId
+    def event(self):
+        return self._event
 
-    @events.setter
-    def events(self,eventId):
-        self._eventId = eventId
+    @event.setter
+    def event(self,eventId):
+        self._event = eventId
 
     @property
     def placeholder(self):
@@ -131,6 +135,7 @@ class Person:
     def __repr__(self):
         return self.languages[0]
 
+
 def groupSatisfaction(group):
     output = 0
     for i in range(0,len(group)):
@@ -142,9 +147,8 @@ def groupSatisfaction(group):
 def basicSort(people, groupSize):
 
     allGroups = []
-    for run in range(0,20): # do 5 random runs of algorithm, find best grouping
+    for run in range(0,50): # do 5 random runs of algorithm, find best grouping
         peopleCopy = copy.deepcopy(people)
-        print("RUN: " + str(run),end = ": ")
         random.shuffle(people)
         while(len(peopleCopy)%groupSize != 0):
             blank = Person(-1, [""],"",0,"",0)
@@ -198,7 +202,7 @@ def basicSort(people, groupSize):
                 member = member.groupMember
             groups.append(newGroup)
         allGroups.append(groups)
-        print(groups)
+        #print(groups)
 
     satisfactions = []
     maxSatisfaction = 0
@@ -216,6 +220,7 @@ def basicSort(people, groupSize):
             maxIndex = i
 
     toConvert = allGroups[maxIndex]
+    print(toConvert)
     output = []
     for indTeam in toConvert:
         toAdd = Team(people[0].event)
@@ -225,3 +230,6 @@ def basicSort(people, groupSize):
         output.append(toAdd)
 
     return output
+
+def main():
+    pass
